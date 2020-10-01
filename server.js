@@ -2,7 +2,7 @@ const express = require("express");
 const fs = require('fs');
 const app = express();
 const File = JSON.parse(fs.readFileSync('./public/numberOfMatchesPlayedInEachStadium.json', "utf-8"));
-var port = process.env.port || 3000;
+var PORT = process.env.PORT || 3000;
 
 app.use(express.static("public"));
 
@@ -15,6 +15,6 @@ app.get("/season/:year", (req, res) => {
 });
 
 
-app.listen(port, () => {
+app.listen(PORT, () => {
     console.log("Server running in port 3000.....");
 });
