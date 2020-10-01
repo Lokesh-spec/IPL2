@@ -38,18 +38,6 @@ function myfunction() {
                     series: [{
                         name: 'Venue',
                         data: seriesData,
-                        dataLabels: {
-                            enabled: true,
-                            rotation: -90,
-                            color: '#FFFFFF',
-                            align: 'right',
-                        
-                            y: 10, // 10 pixels down from the top
-                            style: {
-                                fontSize: '13px',
-                                fontFamily: 'Verdana, sans-serif'
-                            }
-                        }
                     }]
                 });
 
