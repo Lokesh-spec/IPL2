@@ -1,0 +1,30 @@
+body {
+    font-family: sans-serif;
+}
+
+h1 {
+    text-align: center;
+    padding-bottom: 50px;
+}
+
+div {
+    width: 95%;
+    height: 50px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+    border: 100px;
+}
+
+div:hover {
+    box-shadow: 0 0 11px #00bcd4; 
+    border: 100px;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+b {
+    margin-left: 35px;
+}
+
