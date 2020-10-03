@@ -1,7 +1,16 @@
 function myfunction() {
     const year = document.getElementById("season").value;
     console.log(typeof year);
-    fetch(`/season/${year}`)
+    if (year < 2008) {
+        alert("I think you know when IPL started.");
+        alert("Okay!!! Let me give you hint click on Ok.");
+        alert("Enter the year between 2008 to 2019.");
+    } else if (year > 2019) {
+        alert("Still time travell thing does not exist!!!");
+        alert("Okay!!! Let me give you hint click on Ok.");
+        alert("Enter the year between 2008 to 2019.");
+    } else {
+        fetch(`/season/${year}`)
         .then((resp) => resp.json())
         .then((resp) => { visualizeData(resp);
             function visualizeData(data) { 
@@ -43,4 +52,5 @@ function myfunction() {
 
             }
         });
+    }
 }
