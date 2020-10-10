@@ -6,11 +6,14 @@ const extraRunConcededByEachTeam = require("./ipl/extraRunConcededByEachTeam");
 const topEconomicalBowlers = require("./ipl/topEconomicalBowlers");
 const storyData = require("./ipl/storyData");
 const numberOfMatchesPlayedInEachStadium = require("./ipl/numberOfMatchesPlayedInEachStadium");
+const highestWicketTaker = require("./ipl/highestWicketTaker");
+const mostRunByPlayers = require("./ipl/mostRunByPlayers");
 
 const MATCHES_FILE_PATH = "./csv_data/matches.csv";
 const DELIVERIES_FILE_PATH = "./csv_data/deliveries.csv";
 const JSON_OUTPUT_FILE_PATH = "./public/data.json";
 const JSON_OUTPUT_FILE_PATH_IPL2 = "./public/numberOfMatchesPlayedInEachStadium.json";
+const JSON_OUTPUT_FILE_PATH_IPL3 = "./public/mostRunByPlayers.json";
 
 function main() {
   csv()
@@ -29,9 +32,14 @@ function main() {
         // console.log(result4);
         let result5 = storyData(matches);
         // console.log(result5); 
+        let result6 = highestWicketTaker(deliveries);
+        // console.log(result6);
         const result = numberOfMatchesPlayedInEachStadium(matches);
         // console.log(result);
+        const result7 = mostRunByPlayers(deliveries);
+        // console.log(result7);
         saveNumberOfMatchesPlayedInEachStadium(result); 
+        saveMostRunByPlayers(result7);
         savaData(result1, result2, result3, result4, result5);
     });
   });
@@ -60,8 +68,7 @@ function saveNumberOfMatchesPlayedInEachStadium(result) {
   const jsonData = {
     numberOfMatchesPlayedInEachStadium : result
   };
-
-//   console.log(Object.keys(jsonData).length);
+  // console.log(jsonData);
   const jsonString = JSON.stringify(jsonData);
   fs.writeFile(JSON_OUTPUT_FILE_PATH_IPL2, jsonString, "utf8", err => {
     if (err) {
@@ -69,6 +76,23 @@ function saveNumberOfMatchesPlayedInEachStadium(result) {
     }
   });
 }
+
+
+function saveMostRunByPlayers(result) {
+  let jsonData = {
+    mostRunByPlayers : result
+  };
+
+  let jsonString = JSON.stringify(jsonData);
+
+  fs.writeFile(JSON_OUTPUT_FILE_PATH_IPL3, jsonString, "utf8", err => {
+    if (err) {
+      console.log(err);
+    }
+  });
+
+}
+
 
 
 main();

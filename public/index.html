@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,6 +45,13 @@
 
     <script src="app.js"></script>
 
+    <h3 style="margin-top: 25px;"> <b> Select the season to see top scorer of the year </b>  </h3>
+    <h4> <b> Enter the Year : </b> </h4>
+    <br>
+    <input class="form-control" style="margin-left: 40px; width: 200px; height: 45px; margin-bottom: 15px;" type="number" min="2008" max="2019" step="1" id="year" placeholder="year" autocomplete="off">
+    <button style="margin-left: 40px; margin-bottom: 15px;" type="submit" onclick="showData()" class="btn btn-outline-dark">Submit</button>
 
+    <div id="most-runs-by-players" style="min-width: 310px; height: 490px; margin: 0 auto"></div>
+    <script src="app3.js"></script>
 </body>
 </html>

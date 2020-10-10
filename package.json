@@ -1,17 +1,19 @@
 {
-  "name": "ipl",
+  "name": "ipl_project",
   "version": "1.0.0",
-  "description": "IPL Data Visulaization",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "ipl": "node index.js",
+    "start": "http-server"
   },
-  "author": "LOKESH K V",
+  "keywords": [],
+  "author": "",
   "license": "ISC",
   "dependencies": {
     "csvtojson": "^2.0.10",
     "express": "^4.17.1",
-    "fs": "0.0.1-security",
+    "http-server": "^0.12.3",
     "nodemon": "^2.0.4"
   }
 }
