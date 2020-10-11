@@ -139,7 +139,7 @@ function fetchAndVisualizeData() {
       type: "column"
     },
     title: {
-      text: "Run scorers"
+      text: "Top Run scorers"
     },
     subtitle: {
       text:
