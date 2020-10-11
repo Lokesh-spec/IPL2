@@ -8,6 +8,9 @@ const storyData = require("./ipl/storyData");
 const numberOfMatchesPlayedInEachStadium = require("./ipl/numberOfMatchesPlayedInEachStadium");
 const highestWicketTaker = require("./ipl/highestWicketTaker");
 const mostRunByPlayers = require("./ipl/mostRunByPlayers");
+const highestRunScorers = require("./ipl/highestRunScorers");
+const totalWicketsByTeam = require("./ipl/totalWicketsByTeam");
+const numberOfTossesWonByTeam = require("./ipl/numberOfTossesWonByTeam");
 
 const MATCHES_FILE_PATH = "./csv_data/matches.csv";
 const DELIVERIES_FILE_PATH = "./csv_data/deliveries.csv";
@@ -38,22 +41,36 @@ function main() {
         // console.log(result);
         const result7 = mostRunByPlayers(deliveries);
         // console.log(result7);
+
+        const result8 = highestRunScorers(deliveries);
+        // console.log(result8);
+
+        const result9 = totalWicketsByTeam(deliveries);
+        // console.log(result9);
+
+        const result10 = numberOfTossesWonByTeam(matches);
+        // console.log(result10);
+
         saveNumberOfMatchesPlayedInEachStadium(result); 
         saveMostRunByPlayers(result7);
-        savaData(result1, result2, result3, result4, result5);
+        savaData(result1, result2, result3, result4, result5, result6, result8, result9, result10);
     });
   });
   
 }
 
-function savaData(result1, result2, result3, result4, result5) {
+function savaData(result1, result2, result3, result4, result5,result6, result8, result9, result10) {
 
   const jsonData = {
     matchesPlayedPerYear : result1,
     matchesWonbyTeamsPerYear : result2,
     extraRunConcededByEachTeam : result3,
     topEconomicalBowlers : result4,
-    storyData : result5
+    storyData : result5,
+    highestWicketTaker : result6,
+    highestRunScorers : result8,
+    totalWicketsByTeam : result9,
+    numberOfTossesWonByTeam : result10
   };
   // console.log(jsonData);
   const jsonString = JSON.stringify(jsonData);

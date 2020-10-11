@@ -4,7 +4,7 @@ function showData() {
     // console.log(year);
     fetch('mostrun?year=' + year)
     .then((resp) => resp.json())
-    .then((resp) => {visualize(resp)
+    .then((resp) => { visualize(resp)
             function visualize(data) { 
                 let seriesData = [];
                 for (let key in data){
@@ -37,7 +37,7 @@ function showData() {
                         }
                     },
                     series: [{
-                        name: 'Players',
+                        name: 'Runs',
                         data: seriesData,
                     }]
                 });

@@ -3,18 +3,16 @@ function highestWicketTaker(deliveries) {
     let wicketTaker = {}
     for (let deliverie of deliveries) {
         const bowler = deliverie.bowler;
-        const player_dismissed = deliverie.player_dismissed;
+        const dismissal_kind = deliverie.dismissal_kind;
         // console.log(bowler + " " + player_dismissed);
+        
         if (result[bowler]) {
-            if (player_dismissed) {
+            if (dismissal_kind === "caught" || dismissal_kind  === "lbw" || dismissal_kind === "stumped" || dismissal_kind === "bowled" || dismissal_kind === "obstructing the field") {
                 result[bowler] += 1;
             }
         } else {
             result[bowler] = 1;
         }
-    }
-    for (let data in result) {
-        result[data] -= 1;
     }
     
     let sortable = [];

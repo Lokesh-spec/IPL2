@@ -12,8 +12,158 @@ function fetchAndVisualizeData() {
     visualizeExtraRunConcededByEachTeam(data.extraRunConcededByEachTeam);
     visualizeTopEconomicalBowlers(data.topEconomicalBowlers);
     visualizeStoryData(data.storyData);
+    visualizeHighestRunScorers(data.highestRunScorers);
+    visualizeTotalWicketsByTeam(data.totalWicketsByTeam);
+    visualizeNumberOfTossesWonByTeam(data.numberOfTossesWonByTeam);
+    visualizeHighestWicketTaker(data.highestWicketTaker);
     return;
   }
+
+  function visualizeHighestWicketTaker(highestWicketTaker) {
+    const seriesData = [];
+    for (let year in highestWicketTaker) {
+        seriesData.push([year, highestWicketTaker[year]]);
+    }
+  
+    Highcharts.chart("Highest-wicket-takers", {
+      chart: {
+        type: "column"
+      },
+      title: {
+        text: "Highest wicket takers"
+      },
+      subtitle: {
+        text:
+          'Source: <a href="https://www.kaggle.com/nowke9/ipldata/data">IPL Dataset</a>'
+      },
+      xAxis: {
+        type: "category"
+      },
+      yAxis: {
+        min: 0,
+        title: {
+          text: "Wickets"
+        }
+      },
+      series: [
+        {
+          name: "Players",
+          data: seriesData
+        }
+      ]
+    });
+  }
+
+  function visualizeNumberOfTossesWonByTeam(numberOfTossesWonByTeam) {
+    let seriesData = [];
+    for (let data in numberOfTossesWonByTeam) {
+      seriesData.push([data, numberOfTossesWonByTeam[data]]);
+    }
+      Highcharts.chart('container1', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: 0,
+            plotShadow: false
+        },
+        title: {
+            text: 'Toss<br>won by teams',
+            align: 'center',
+            verticalAlign: 'middle',
+            y: 60
+        },
+        accessibility: {
+            point: {
+                valueSuffix: '%'
+            }
+        },
+        plotOptions: {
+          pie: {
+              startAngle: -90,
+              endAngle: 90,
+              center: ['50%', '75%'],
+              size: '110%'
+          }
+      },
+        series: [{
+            type: 'pie',
+            name: 'Number of toss won by each team is',
+            innerSize: '50%',
+            data: seriesData
+        }]
+    });
+  }
+
+  function visualizeTotalWicketsByTeam(totalWicketsByTeam) {
+    const seriesData = [];
+    let name = "name";
+    let y = "y"
+    for (let year in totalWicketsByTeam) {
+      seriesData.push({name : year, y : totalWicketsByTeam[year]});
+    }
+    Highcharts.chart('container', {
+      chart: {
+          plotBackgroundColor: null,
+          plotBorderWidth: null,
+          plotShadow: false,
+          type: 'pie'
+      },
+      title: {
+          text: 'Total number of wicket by all teams'
+      },
+      plotOptions: {
+          pie: {
+              allowPointSelect: true,
+              cursor: 'pointer',
+              dataLabels: {
+                  enabled: false
+              },
+              showInLegend: true
+          }
+      },
+      series: [{
+          name: 'wickets',
+          colorByPoint: true,
+          data: seriesData
+      }]
+  });
+  }
+
+  function visualizeHighestRunScorers(highestRunScorers) {
+    const seriesData = [];
+    for (let year in highestRunScorers) {
+      seriesData.push([year, highestRunScorers[year]]);
+  }
+
+  Highcharts.chart("highest-run-scorers", {
+    chart: {
+      type: "column"
+    },
+    title: {
+      text: "Run scorers"
+    },
+    subtitle: {
+      text:
+        'Source: <a href="https://www.kaggle.com/nowke9/ipldata/data">IPL Dataset</a>'
+    },
+    xAxis: {
+      type: "category"
+    },
+    yAxis: {
+      min: 0,
+      title: {
+        text: "Runs"
+      }
+    },
+    series: [
+      {
+        name: "Players",
+        data: seriesData
+      }
+    ]
+  });
+  }
+
+
   
   function visualizeMatchesPlayedPerYear(matchesPlayedPerYear) {
     const seriesData = [];
@@ -206,7 +356,7 @@ function fetchAndVisualizeData() {
       },
         series: [{
             type: 'pie',
-            name: 'Number of won by each team is',
+            name: 'Number of matches won by each team is',
             innerSize: '50%',
             data: seriesData
         }]
