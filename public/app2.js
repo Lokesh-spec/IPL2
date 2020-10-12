@@ -30,7 +30,7 @@ function fetchAndVisualizeData() {
         type: "column"
       },
       title: {
-        text: "Highest wicket takers"
+        text: "Highest wicket takers of IPL"
       },
       subtitle: {
         text:
